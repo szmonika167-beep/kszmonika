@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K_SZMónika</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="styleshee">
+    <style>
+        body {
+    background-color: #0b0f19;
+    /* Egy nagyon halvány, modern kék fényfolt a sarokban */
+    background-image: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
+    color: #e2e8f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px 0;
+}
+
+        #oldal-keret {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #1e293b;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+        header {
+    background-color: #0f172a;
+    color: #38bdf8;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 10px;
+}
+
+        .fenti-menu {
+    background-color: #1e293b;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #334155;
+}
+
+        .fenti-menu a {
+    color: #cbd5e1;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+        .fenti-menu a:hover {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+.tartalom-tarolo {
+    display: flex;
+    gap: 15px;
+}
+
+        aside {
+    width: 250px;
+    background-color: #1e293b;
+    padding: 15px;
+    border-radius: 5px;
+    color: #cbd5e1;
+    border: 1px solid #334155;
+}
+
+        aside h3 {
+    color: #ffffff;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 5px;
+    margin-top: 0;
+    font-size: 16px;
+}
+
+        aside ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+aside li {
+    padding: 6px 0;
+    border-bottom: 1px dotted #334155;
+}
+
+       aside a {
+    color: #cbd5e1;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    transition: color 0.2s;
+}
+
+aside a:hover {
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+        main {
+    flex: 1;
+    background-color: #0f172a;
+    padding: 20px;
+    border-radius: 5px;
+    min-height: 250px;
+    border: 1px solid #334155;
+}
+
+/* Alapértelmezésben rejtett és átlátszó */
+.tartalom-szekcio {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Amelyik aktiv, az látszódik és lassan feltünik */
+.tartalom-szekcio.aktiv {
+    display: block;
+    opacity: 1;
+}
+
+main h2 {
+    color: #38bdf8;
+    border-bottom: 2px solid #334155;
+    padding-bottom: 5px;
+    margin-top: 0;
+    font-size: 18px;
+}        
+
+        main p, main li {
+    color: #cbd5e1;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.doboz-Cím {
+    font-weight: bold;
+    color: #38bdf8;
+    margin-top: 15px;
+}
+
+footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 12px;
+    margin-top: 15px;
+    padding: 10px;
+}
+/* --- ÚJ: Kártya stílus az üres részek kitöltésére --- */
+.kartya {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+/* --- Harmadik: Modern kék sáv a címsorok elé --- */
+main h2 {
+    color: #38bdf8;
+    border-bottom: 2px solid #334155;
+    padding-bottom: 5px;
+    margin-top: 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+main h2::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 18px;
+    background-color: #38bdf8;
+    border-radius: 2px;
+}
+/* --- Stílus a kódablak imitációhoz --- */
+.kod-doboz {
+    background-color: #020617; /* Nagyon sötét háttér a kódnak */
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace; /* Monospace betűtípus a kódhoz */
+    font-size: 13px;
+    color: #e2e8f0;
+    overflow-x: auto;
+    margin-top: 15px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+}
+
+.kod-sor {
+    margin: 4px 0;
+}
+
+.kod-kulcsszo {
+    color: #38bdf8; /* Kék szín a kulcsszavaknak */
+}
+
+.kod-szoveg {
+    color: #a5b4fc; /* Halvány lila/kék a szövegeknek */
+}
+/* --- Stílus a technológia címkékhez (Badges) --- */
+.badge-tarolo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.badge {
+    background-color: #0f172a;
+    color: #38bdf8;
+    border: 1px solid #334155;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+        /* Ide illeszd be a gomb kódját: */
+        .youtube-gomb  {
+            display: inline-block;
+             background-color: #ff0000;
+             color: #ffffff ;
+             padding: 10px 20px;
+             text-decoration: none;
+             border-radius: 5px;
+             font-weight: bold;
+             margin-top: 10px;
+        }
+
+        .youtube-gomb:hover {
+            background-color: #cc0000;
+        }
+        /* --- Reszponzív beállítások mobilon vagy kis képernyőn --- */
+    @media (max-width: 768px) {
+        .tartalom-tarolo {
+            flex-direction: column;
+        }
+        aside {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        main {
+            width: 100%;
+        }
+    }
+    </style>
+</head>
+<body>
+
+    <div id="oldal-keret">
+        
+        <header>
+            K_SZMónika
+        </header>
+
+        <!-- Fenti menü -->
+        <div class="fenti-menu">
+            <a onclick="mutasdSzekciot('rolam')">Rólam</a>
+            <a onclick="mutasdSzekciot('szolgaltatasok')">Szolgáltatások</a>
+            <a onclick="mutasdSzekciot('projektek')">Projektek</a>
+            <a onclick="mutasdSzekciot('youtube')">YouTube</a>
+            <a onclick="mutasdSzekciot('kapcsolat')">Kapcsolat</a>
+        </div>
+
+        <div class="tartalom-tarolo">
+            
+            <!-- Bal oldali menü -->
+            <aside>
+                <h3>Főmenü</h3>
+                <ul>
+                    <li><a onclick="mutasdSzekciot('rolam')">Rólam</a></li>
+                    <li><a onclick="mutasdSzekciot('szolgaltatasok')">Szolgáltatások</a></li>
+                    <li><a onclick="mutasdSzekciot('projektek')">Projektek</a></li>
+                    <li><a onclick="mutasdSzekciot('youtube')">YouTube csatorna</a></li>
+                    <li><a onclick="mutasdSzekciot('kapcsolat')">Elérhetőség</a></li>
+                </ul>
+            </aside>
+
+           <!-- Jobb oldali tartalom (dobozok) -->
+            <main>
+                <!-- Rólam rész (alapból látszik, mert megkapta az 'aktiv' szót) -->
+                <div id="rolam" class="tartalom-szekcio aktiv">
+                    <h2>Rólam</h2>
+                    <div class="kartya">
+                        <p>Szia! Örülök, hogy benéztél hozzám! 👋
+
+Mindig is imádtam alkotni és kikapcsolódni – legyen szó egy jó játékról, egy izgalmas élő adásról vagy épp a webfejlesztés rejtélyeinek felfedezéséről. A streameimben és a videóimban az a célom, hogy egy szuper, barátságos közösséget építsek, ahol mindenki jól érezheti magát egy hosszú nap után.
+
+Amikor épp nem a képernyő előtt ülök vagy kódolok, szívesen merülök el kreatív projektekben, vagy kapcsolódom ki a szabadban.
+
+Nézz körül bátran a weboldalamon, és ha tetszik, amit csinálok, csatlakozz hozzám az adásokban is! ✨</p>
+                        
+                        <!-- Itt a kódablak imitáció -->
+                        <div class="kod-doboz">
+                            <div class="kod-sor"><span class="kod-kulcsszo">const</span> developer = {</div>
+                            <div class="kod-sor">&nbsp;&nbsp;&nbsp;&nbsp;role: <span class="kod-szoveg">"Webfejlesztő & Streamer"</span>,</div>
+                            <div class="kod-sor">&nbsp;&nbsp;&nbsp;&nbsp;skills: [<span class="kod-szoveg">"HTML"</span>, <span class="kod-szoveg">"CSS"</span>],</div>
+                            <div class="kod-sor">&nbsp;&nbsp;&nbsp;&nbsp;status: <span class="kod-szoveg">"Online & Ready 🚀"</span></div>
+                            <div class="kod-sor">};</div>
+                        </div>
+                        <!-- ITT VAN A MÁSODIK (A CÍMKÉK) -->
+        <div class="badge-tarolo">
+            <span class="badge">HTML5</span>
+            <span class="badge">CSS3</span>
+            <span class="badge">Webdesign</span>
+            <span class="badge">Streaming 🚀</span>
+        </div>
+                    </div>
+                </div>
+
+                <!-- Szolgáltatások rész -->
+                <div id="szolgaltatasok" class="tartalom-szekcio">
+                    <h2>Szolgáltatások</h2>
+                    <div class="kartya">
+                        <p class="doboz-Cím" style="margin-top:0;">Mit vállalok?</p>
+                        <ul>
+                            <li>Egyedi weboldalak készítése (HTML / CSS)</li>
+                            <li>Meglévő oldalak szerkesztése, karbantartása</li>
+                            <li>Tartalomgyártás és streamek</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Projektek rész -->
+                <div id="projektek" class="tartalom-szekcio">
+                    <h2>Projektek / Referenciák</h2>
+                    <div class="kartya">
+                        <p>Ízelítő az eddigi munkáimból és fejlesztéseimből:</p>
+                        <ul>
+                            <li><strong>Ez a portfólió weboldal:</strong> HTML / CSS alapú egyéni modern dizájn.</li>
+                            <li><strong>Jövőbeli projekt:</strong> Ide jöhet majd a következő elkészült weboldalad linkje.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- YouTube rész -->
+                <div id="youtube" class="tartalom-szekcio">
+                    <h2>YouTube Csatorna</h2>
+                    <div class="kartya">
+                        <p>Nézz bele a legfrissebb tartalmaimba és streameimbe:</p>
+                        <p><a href="https://www.youtube.com/channel/UCHaXQm929eM7sTa2syUVRBQ" target="_blank">Kattints ide a csatornáért!</a></p>
+                         
+                        <!-- Ez lesz a gomb a videóhoz-->
+                        <p><a href="https://www.youtube.com/watch?v=VUtTGOJQ-mI" target="_blank" class="youtube-gomb">▶ Nézd meg a bemutató videót</a></p>
+                    </div>
+                </div>
+
+                <!-- Kapcsolat rész -->
+                <div id="kapcsolat" class="tartalom-szekcio">
+                    <h2>Kapcsolat</h2>
+                    <div class="kartya">
+                        <p>Írj nekem bizalommal: <a href="mailto:szbusiness167@gmail.com">szbusiness167@gmail.com</a></p>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer>
+            A weblapot készítette: K_SZMónika • Minden jog fenntartva
+        </footer>
+
+
+    </div>
+
+    <!-- Ez a pici program váltogatja a dobozokat, amire rákattintasz -->
+    <script>
+        function mutasdSzekciot(id) {
+            
+            // Elrejt minden dobozt
+            const szekciok = document.querySelectorAll('.tartalom-szekcio');
+            szekciok.forEach(s => s.classList.remove('aktiv'));
+
+            // Csak azt mutatja meg, amelyikre kattintottak
+            document.getElementById(id).classList.add('aktiv');
+            
+
+        }
+    </script>
+</body>
+</html>
